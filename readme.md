@@ -37,7 +37,25 @@ Al enlazar el servicio se obtiene una interfaz de interacción entre el cliente y
 4. Invocar el método `bindService(Intent, ServiceConnection, flag)`, al ser invocado este método el sistema llama el método `onBind()` del servicio.
 
 La comunicación entre el **servicio** y el **Activity** se lleva a cabo através de los objetos Messenger y Handler.
-![imagen](/capturas/servicio.pdf)
+![imagen](/capturas/servicio.png)
+
+# Ejemplo de aplicación de un servicio.
+
+En este ejemplo se desarrolla un **IntentService** que se conecta a un servicio web RestFul, el API [OpenWeather](http://openweathermap.org/current) y realiza una consulta de estado del clima cada 10 segundos.
+
+###Requerimientos de funcionamiento:
+
+1. El servicio debe iniciarse de dos maneras, al hacer click sobre un botón en la interfaz gráfica de una actividad (Activity) y al encender el dispositivo.
+2. La actividad debe enlazarce al servicio y presentar la información del clima en panatalla.
+3. Cuando la actividad no es visible el servicio debe enviar una notificación en la barra de tareas.
+4. Al hacer click sobre la notificación se despliega una actividad que se enlaza al servicio y presenta en pantalla la información del clima.
+
+###Desarrollo
+
+El desarrollo de la interfaz gráfica (layout y menu) del **Activity** y la implementación de la biblioteca **GSON** será el mismo descrito en el ejemplo [**ClienteServicioRestFul**](https://github.com/dgonzalez870/ClienteServicioRestFul)
+
+![inicial](/capturas/inicial.png) ![iniservicio](/capturas/iniservicio.png) ![notificacion](/capturas/notificacion.png) ![termometro](/capturas/termometro.png)
+
 
 ***
 
