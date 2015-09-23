@@ -31,6 +31,7 @@ El servicio es iniciado cuando desde cualquier otro componente se invoca el méto
 ###Enlazar el servicio
 
 Al enlazar el servicio se obtiene una interfaz de interacción entre el cliente y el servidor, los pasos para enlazar el servicio se enumeran a continuación:
+
 1. Crear en la clase cliente un **Handler** para manejar la comunicación entre el **Servicio** y el **Activity**.
 2. Crear un objeto **Messenger** para enviar mensajes al **Handler** del servicio.
 3. Crear un objeto ServiceConnection e implementar el método `onServiceConnected()` que recibe como parámetro un **IBinder**. En el método `onServiceConnected()` registrar los objetos `Messenger` a través de los cuales se comunican el cliente y el servidor.
