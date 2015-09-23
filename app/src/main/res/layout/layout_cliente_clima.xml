@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="3">
+    <TableRow>
+        <TextView
+            android:textSize="25sp"
+            android:textColor="#0000FF"
+            android:text="Ciudad"
+            android:padding="3dip"
+            android:layout_column="1"/>
+        <TextView
+            android:textSize="25sp"
+            android:textColor="#FF0000"
+            android:id="@+id/tvCiudad"
+            android:text="Caracas"
+            android:gravity="center"
+            android:padding="3dip"
+            android:layout_column="3"/>
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:textSize="25sp"
+            android:textColor="#0000FF"
+            android:text="Temperatura"
+            android:padding="3dip"
+            android:layout_column="1"/>
+        <TextView
+            android:id="@+id/tvTemperatura"
+            android:textSize="25sp"
+            android:textColor="#FF0000"
+            android:text="00ºC"
+            android:gravity="center"
+            android:padding="3dip"
+            android:layout_column="3"/>
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:textSize="25sp"
+            android:textColor="#0000FF"
+            android:layout_column="1"
+            android:text="Presión"
+            android:padding="3dip" />
+        <TextView
+            android:textSize="25sp"
+            android:textColor="#FF0000"
+            android:id="@+id/tvPresion"
+            android:text="00mmHg"
+            android:gravity="center"
+            android:padding="3dip"
+            android:layout_column="3"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:textSize="25sp"
+            android:textColor="#0000FF"
+            android:layout_column="1"
+            android:text="Humedad"
+            android:padding="3dip" />
+        <TextView
+            android:textSize="25sp"
+            android:textColor="#FF0000"
+            android:id="@+id/tvHumedad"
+            android:text="00"
+            android:gravity="center"
+            android:padding="3dip"
+            android:layout_column="3"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_span="3"
+                    android:layout_column="1"
+                    android:text="Solicitar Clima"
+                    android:id="@+id/button"
+                    android:onClick="accionBotonSolicitar"/>
+
+
+    </TableRow>
+</TableLayout>
