@@ -19,6 +19,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static android.widget.Toast.LENGTH_LONG;
+
 public class ServicioClienteActivity extends Activity {
 
 	TextView tvTemperatura;
@@ -26,10 +28,10 @@ public class ServicioClienteActivity extends Activity {
 	TextView tvPresion;
 	TextView tvCiudad;
 
+	//objeto Messenger que sirve para enviar mensajes desde el Activity (Cliente) al Servicio (Servidor)
 	Messenger messengerActivity2Servicio;
+	//Handler que maneja los mensajes recibidos por el Activity
 	Handler activityHandler=new Handler(){
-
-		@Override
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case ServicioClima.PUBLICAR_DATOS:
@@ -43,6 +45,7 @@ public class ServicioClienteActivity extends Activity {
 			}
 		}
 	};
+
 	Messenger messengerActivity=new Messenger(activityHandler);
 
 	
@@ -61,17 +64,19 @@ public class ServicioClienteActivity extends Activity {
 		super.onStart();
 		Intent intent1=new Intent(getApplicationContext(), ServicioClima.class);
 		if(bindService(intent1, conexion, Context.BIND_AUTO_CREATE))
-			Toast.makeText(this,"correcto",Toast.LENGTH_LONG).show();
+			Toast.makeText(this,"correcto", LENGTH_LONG).show();
 	}
 	
 	public void accionBotonSolicitar(View v){
+		//Verifica la conexión de red
 		ConnectivityManager conectividadManager=(ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo informacion=conectividadManager.getActiveNetworkInfo();
+		//Si está conectado a la red entonces inicia el servicio
 		if(State.CONNECTED.equals(informacion.getState())){
 			Intent intent=new Intent(getApplicationContext(), ServicioClima.class);
 			startService(intent);
 		}else{
-			Toast.makeText(this, "No hay conexion de red", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "No hay conexion de red", LENGTH_LONG).show();
 		}
 	}
 	
@@ -83,28 +88,26 @@ public class ServicioClienteActivity extends Activity {
 		}
 	}
 	
-	ServiceConnection conexion=new ServiceConnection(){
-
-		@Override
+	private ServiceConnection conexion=new ServiceConnection(){
 		public void onServiceConnected(ComponentName name, IBinder service) {
-			// TODO Auto-generated method stub
+			//Crea un mensaje
 			Message mensaje=Message.obtain(null, ServicioClima.REGISTRAR_CLIENTE);
+			//Asigna el messenger que recibirá las respuestas al mensaje
 			mensaje.replyTo=messengerActivity;
+			//crea el messenger que transmitirá los mensajes al servicio
 			messengerActivity2Servicio =new Messenger(service);
 			try {
+				//envía un mensaje al servicio.
 				messengerActivity2Servicio.send(mensaje);
 			} catch (RemoteException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 
 		@Override
-		public void onServiceDisconnected(ComponentName name) {
-			// TODO Auto-generated method stub
-			
+		public void onServiceDisconnected(ComponentName componentName) {
+
 		}
-		
 	};
 
 	@Override
