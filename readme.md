@@ -309,13 +309,6 @@ Realiza conexiones cada 10 segundos al servicio RESTFul mienttras el booleano **
 
 ![inicial](/capturas/inicial.png) ![iniservicio](/capturas/iniservicio.png) ![notificacion](/capturas/notificacion.png) ![termometro](/capturas/termometro.png)
 
-Markdown | Less | Pretty
---- | --- | ---
-*Still* | `renders` | **nicely**
-1 | 2 | 3
-
-***
-
 ##Referencias
 
 1. [Android Services](http://developer.android.com/guide/components/services.html)

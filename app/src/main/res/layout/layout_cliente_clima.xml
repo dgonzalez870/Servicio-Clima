@@ -46,7 +46,7 @@
             android:textSize="25sp"
             android:textColor="#FF0000"
             android:id="@+id/tvPresion"
-            android:text="00mmHg"
+            android:text="00 hPa"
             android:gravity="center"
             android:padding="3dip"
             android:layout_column="3"/>

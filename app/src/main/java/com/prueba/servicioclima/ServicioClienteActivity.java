@@ -1,7 +1,5 @@
 package com.prueba.servicioclima;
 
-
-import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -15,13 +13,14 @@ import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import static android.widget.Toast.LENGTH_LONG;
 
-public class ServicioClienteActivity extends Activity {
+public class ServicioClienteActivity extends AppCompatActivity {
 
 	TextView tvTemperatura;
 	TextView tvHumedad;
@@ -35,10 +34,10 @@ public class ServicioClienteActivity extends Activity {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case ServicioClima.PUBLICAR_DATOS:
-				tvTemperatura.setText(msg.getData().getDouble("temp") + "");
-				tvHumedad.setText(msg.getData().getDouble("temp_max") + "");
-				tvPresion.setText(msg.getData().getDouble("temp_min") + "");
-				tvCiudad.setText(msg.getData().getDouble("pressure") + "");
+				tvTemperatura.setText(msg.getData().getDouble("temp") + "ºC");
+				tvHumedad.setText(msg.getData().getDouble("humidity") + "%");
+				tvPresion.setText(msg.getData().getDouble("pressure") + "hPa");
+				tvCiudad.setText(msg.getData().getString("ciudad"));
 				break;
 			default:
 				break;

@@ -78,9 +78,9 @@ public class ServicioClima extends IntentService {
             Message message = Message.obtain(null, PUBLICAR_DATOS);
             Bundle data = new Bundle();
             data.putDouble("temp", datosClima.getMain().getTemp());
-            data.putDouble("temp_min", datosClima.getMain().getTemp_max());
-            data.putDouble("temp_max", datosClima.getMain().getTemp_min());
+            data.putDouble("humidity", datosClima.getMain().getHumidity());
             data.putDouble("pressure", datosClima.getMain().getPressure());
+            data.putString("ciudad", datosClima.getName());
             message.setData(data);
             if (messengerServicio2Activity != null) {
 
